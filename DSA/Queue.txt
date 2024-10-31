@@ -1,0 +1,18 @@
+int head = 0 , tail =0 , N = INITIAL_CAPCITY ;
+Object items [ N ]; // Some initial size
+bool empty () { return ( head == tail ); }
+bool size () { return ( N + tail - head )% N ; }
+Object front () { return items [ head ]; 
+
+void dequeue () {
+if( empty () ) throw Empty ;                     // Queue is empty
+free ( items [ head ]); items [ head ] = NULL ;  // Clear memory
+head = ( head +1)% N ; // Remove an element
+}
+void enqueue ( Object x ) {
+if ( size () == N -1 ) expand ();                // Queue is full ; expand
+items [ tail ] = x ;
+tail = ( tail +1)% N ; // insert element
+}
+
+
